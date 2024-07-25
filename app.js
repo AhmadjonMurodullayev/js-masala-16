@@ -231,3 +231,35 @@ function charFrequency(s) {
 }
 console.log(charFrequency("aabbcc")); // Output: { a: 2, b: 2, c: 2 }
 console.log(charFrequency("hello")); // Output: { h: 1, e: 1, l: 2, o: 1 }
+
+//   69.Berilgan objectda eng chuqur joylashgan qiymatni toping.
+function deepestValue(obj) {
+    let resault = null
+    let total = 0
+    let arr = [{value: obj,step:1}]
+    for(let i = 0 ; i < arr.length ; i++){
+        const {value,step} = arr[i]
+        for(let key in value ){
+            if(typeof value[key] == "object"){
+                arr.push({value: value[key],step:step+1})
+        }else if( step > total){
+            total = step
+            resault = value[key]
+        }
+        }
+    }
+    return resault
+}
+const obj = {
+    a: 1,
+    b: {
+        c: 2,
+        d: {
+            e: 3,
+            f: {
+                g: 4
+            }
+        }
+    }
+};
+console.log(deepestValue(obj)); // Output: 4
