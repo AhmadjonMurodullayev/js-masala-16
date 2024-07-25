@@ -115,7 +115,7 @@ console.log(printCharsInLine("hello")); // Output: "h e l l o"
 // uzun o'xshash prefiksni toping.
 function longestCommonPrefix(strs) {
     let result = "";
-    for (let i = 0; i < strs[0].length; i++) {
+    for (let i = 0; i < strs.length; i++) {
         for (let j = 1; j < strs.length; j++) {
             if (strs[0][i] != strs[j][i]) {
                 return result;
@@ -127,6 +127,22 @@ function longestCommonPrefix(strs) {
 }
 console.log(longestCommonPrefix(["flower", "flow", "flight"])); // Output: "fl"
 console.log(longestCommonPrefix(["dog", "racecar", "car"])); // Output: ""
+
+//   2 chi variyanti
+
+function longestCommonPrefix(strs) {
+    let arr = strs[0]
+    for(let i = 0 ; i < arr.length ; i++){
+          for( let item of strs){
+              if( item[i] != arr[i]){
+                return item.slice(0,i)
+              }
+          }
+    }
+}
+console.log(longestCommonPrefix(["flower", "flow", "flight"])); // Output: "fl"
+console.log(longestCommonPrefix(["dog", "racecar", "car"])); // Output: ""
+
 
 
 // 7.Berilgan qator ichidagi arrayda ichidagi
@@ -152,6 +168,28 @@ console.log( maxSumSubmatrix([
     [4, 11, 6],
     [7, 8, 9]
 ]));; // [7, 8, 9]
+
+//   2 chi variyanti
+function maxSumSubmatrix(matrix,) {
+    let max_count = 0
+    let resault = 0
+    for(let i = 0 ; i < matrix.length ; i++){
+        let total = 0
+        for(let j = 0 ; j < matrix[i].length ; j++){
+            total += matrix[i][j]
+        }
+        if(total > max_count){
+            max_count = total
+            resault = matrix[i]
+        }
+    }
+    return resault
+  }
+  console.log(maxSumSubmatrix([
+      [10, 2, 3],
+      [4, 11, 6],
+      [7, 8, 9]
+  ])); // [7, 8, 9]
 
 // 8.Berilgan ikki massivdagi umumiy 
 // elementlarni toping.
